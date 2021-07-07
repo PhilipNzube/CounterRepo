@@ -1,7 +1,8 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/png" href="./images/CounterIcon.png">
 <title>
 My CountDownTimer
 </title>
@@ -208,7 +209,7 @@ TimeLeft-=1;
 var Timer = setInterval(function(){
 console.log("Counting");
 document.getElementById("Time").innerHTML=TimeLeft;
-if(TimeLeft==50){
+if(TimeLeft==10){
 clearInterval(Timer);
 }
 TimeLeft+=1;
