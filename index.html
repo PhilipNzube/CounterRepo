@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+My CountDownTimer
+</title>
+<style>
+body{
+background:url("./images/BgImg.png");
+font-family:Helvetica, monospace;
+overflow-x:hidden;
+overflow-y:hidden;
+}
+#MainBG{
+position:relative;
+top:3px;
+}
+#Bg{
+width:400px;
+height:550px;
+border-radius:3px;
+border:2px solid #fff;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:480px;
+top:80px;
+}
+#Head{
+color:#fff;
+font-size:40px;
+position:relative;
+bottom:150px;
+}
+#TimeBG{
+position:relative;
+bottom:300px;
+left:15px;
+}
+#Time{
+color:green;
+font-size:200px;
+position:relative;
+bottom:100px;
+}
+#LowerCountBut{
+background:#202945;
+width:150px;
+height:45px;
+border-radius:3px;
+border:2px solid #202945;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:0px;
+bottom:100px;
+color:#fff;
+}
+#AddCountBut{
+background:#202945;
+width:120px;
+height:45px;
+border-radius:3px;
+border:2px solid #202945;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:0px;
+bottom:80px;
+color:#fff;
+}
+#Warning{
+transition:all 5s ease-in-out;
+background:red;
+width:1400px;
+height:45px;
+border-radius:3px;
+border:2px solid #202945;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:-20px;
+bottom:988px;
+text-align:center;
+color:#fff;
+display:none;
+}
+
+@media only screen and (max-width:375px){
+#MainBG{
+position:relative;
+top:3px;
+}
+#Bg{
+width:200px;
+height:340px;
+border-radius:3px;
+border:2px solid #fff;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:45px;
+top:40px;
+}
+#Head{
+color:#fff;
+font-size:25px;
+position:relative;
+bottom:50px;
+}
+#TimeBG{
+position:relative;
+bottom:250px;
+left:0px;
+font-size:20px;
+}
+#Time{
+color:green;
+font-size:110px;
+position:relative;
+bottom:50px;
+}
+#LowerCountBut{
+background:#202945;
+width:150px;
+height:45px;
+border-radius:3px;
+border:2px solid #202945;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:0px;
+bottom:45px;
+color:#fff;
+}
+#AddCountBut{
+background:#202945;
+width:120px;
+height:45px;
+border-radius:3px;
+border:2px solid #202945;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:0px;
+bottom:28px;
+color:#fff;
+}
+
+#Warning{
+transition:all 5s ease-in-out;
+background:red;
+width:400px;
+height:45px;
+border-radius:3px;
+border:2px solid #202945;
+box-shadow:1px 10px 10px #000;
+position:relative;
+left:-20px;
+bottom:640px;
+text-align:center;
+color:#fff;
+font-size:10px;
+display:none;
+}
+}
+
+
+</style>
+<script>
+console.log("AboutToCount");
+var AutoTimer = false;
+var TimeLeft = 10;
+var AutoLowerCount = false;
+var AutoAddCount = false;
+function LowerCount(){
+if(TimeLeft!=0){
+TimeLeft-=1;
+document.getElementById("Time").innerHTML=TimeLeft;
+}else if(TimeLeft==0){
+document.getElementById("Warning").style.display="block";
+document.getElementById("WarningOutPut").innerHTML="Minimum Count Has Been Reached!!";
+setTimeout(function(){
+document.getElementById("Warning").style.display="none";
+},3000);
+}
+}
+function AddCount(){
+if(TimeLeft!=10){
+TimeLeft+=1;
+document.getElementById("Time").innerHTML=TimeLeft;
+}else if(TimeLeft==10){
+document.getElementById("Warning").style.display="block";
+document.getElementById("WarningOutPut").innerHTML="Maximum Count Has Been Reached!!";
+setTimeout(function(){
+document.getElementById("Warning").style.display="none";
+},3000);
+}
+}
+
+
+//For my next version of this timer project
+if(AutoTimer==true){
+if(AutoLowerCount==true){
+var Timer = setInterval(function(){
+console.log("Counting");
+document.getElementById("Time").innerHTML=TimeLeft;
+if(TimeLeft==0){
+clearInterval(Timer);
+}
+TimeLeft-=1;
+},1000);
+}else if(AutoAddCount==true || AutoLowerCount==false){
+var Timer = setInterval(function(){
+console.log("Counting");
+document.getElementById("Time").innerHTML=TimeLeft;
+if(TimeLeft==10){
+clearInterval(Timer);
+}
+TimeLeft+=1;
+},1000);
+}
+}
+</script>
+</head>
+<body>
+<div id="MainBG">
+<div id="Bg"></div>
+<div id="TimeBG">
+<center><h1 id="Head">COUNTER</h1></center>
+<center><div id="Time">10</div></center>
+<center><div id="LowerCount"><button onclick="LowerCount()" id="LowerCountBut">LOWER COUNT</button></div></center>
+<center><div id="AddCount"><button onclick="AddCount()" id="AddCountBut">ADD COUNT</button></div></center>
+</div>
+<center><div id="Warning"><center><h3 id="WarningOutPut"></h3></center></div></center>
+</div>
+</body>
+</html>
