@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Nah<!DOCTYPE html>
 <html>
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,7 +164,7 @@ display:none;
 <script>
 console.log("AboutToCount");
 var AutoTimer = false;
-var TimeLeft = 10;
+var TimeLeft = 50;
 var AutoLowerCount = false;
 var AutoAddCount = false;
 function LowerCount(){
@@ -180,10 +180,10 @@ document.getElementById("Warning").style.display="none";
 }
 }
 function AddCount(){
-if(TimeLeft!=10){
+if(TimeLeft!=50){
 TimeLeft+=1;
 document.getElementById("Time").innerHTML=TimeLeft;
-}else if(TimeLeft==10){
+}else if(TimeLeft==50){
 document.getElementById("Warning").style.display="block";
 document.getElementById("WarningOutPut").innerHTML="Maximum Count Has Been Reached!!";
 setTimeout(function(){
@@ -208,7 +208,7 @@ TimeLeft-=1;
 var Timer = setInterval(function(){
 console.log("Counting");
 document.getElementById("Time").innerHTML=TimeLeft;
-if(TimeLeft==10){
+if(TimeLeft==50){
 clearInterval(Timer);
 }
 TimeLeft+=1;
